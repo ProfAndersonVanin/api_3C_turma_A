@@ -3,7 +3,7 @@
     include 'conexao.php';
 
     $metodo = $_SERVER['REQUEST_METHOD'];
-    // $input = json_decode(file_get_contents('php://input'), true);
+    
 
     $url = $_SERVER['REQUEST_URI'];
     
@@ -123,6 +123,11 @@
 
     function insere_curso(){
         global $conexao;
+        //OPCAO 1 COM JSON
+        // $input = json_decode(file_get_contents('php://input'), true);
+        // $nome_curso = $input['nome_curso'];
+
+        //OPCAO 2 COM PARAMETROS
         $nome_curso = $_GET['nome_curso'];
 
         $sql = "INSERT INTO cursos (nome_curso) VALUES ('$nome_curso')";
