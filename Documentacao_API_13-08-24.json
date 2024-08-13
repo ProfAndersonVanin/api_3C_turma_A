@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "3587f161-8b06-4941-b88e-dfc34fe73709",
+        "_postman_id": "aeec8d0e-dc7c-4a5f-9c63-34e66b592d70",
         "name": "teste api",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -24,15 +24,16 @@
             }
         },
         {
-            "name": "INSERE UM CURSO",
+            "name": "INSERE UM CURSO OPCAO 1 JSON",
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "localhost/exercicio/api.php/cursos?nome_curso=Jurídico",
+                    "raw": "localhost/exercicio/api.php/cursos",
                     "query": [
                         {
                             "key": "nome_curso",
-                            "value": "Jurídico"
+                            "value": "Jurídico",
+                            "disabled": true
                         }
                     ],
                     "variable": [],
@@ -44,6 +45,15 @@
                     "host": [
                         "localhost"
                     ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"nome_curso\": \"TESTE\"\n}"
                 }
             }
         },
@@ -127,6 +137,30 @@
                         "api.php",
                         "cursos",
                         "2"
+                    ],
+                    "host": [
+                        "localhost"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "INSERE UM CURSO OPCAO 2 PARAMETROS",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost/exercicio/api.php/cursos?nome_curso=TESTE 2",
+                    "query": [
+                        {
+                            "key": "nome_curso",
+                            "value": "TESTE 2"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "exercicio",
+                        "api.php",
+                        "cursos"
                     ],
                     "host": [
                         "localhost"
