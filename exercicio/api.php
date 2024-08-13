@@ -3,6 +3,7 @@
     include 'conexao.php';
 
     $metodo = $_SERVER['REQUEST_METHOD'];
+    // $input = json_decode(file_get_contents('php://input'), true);
 
     $url = $_SERVER['REQUEST_URI'];
     
@@ -51,9 +52,10 @@
                 ]); 
             }
             elseif ($terceiraparte == 'cursos') {
-                echo json_encode([
-                    'mensagem' => 'INSERE UM CURSO NOVO'
-                ]);
+                insere_curso();
+                // echo json_encode([
+                //     'mensagem' => 'INSERE UM CURSO NOVO'
+                // ]);
             }
             break;
         case 'PUT':
@@ -117,6 +119,24 @@
             'mensagem' => 'LISTA DE UM CURSO',
             'dados_aluno' => $curso
         ]);
+    }
+
+    function insere_curso(){
+        global $conexao;
+        $nome_curso = $_GET['nome_curso'];
+
+        $sql = "INSERT INTO cursos (nome_curso) VALUES ('$nome_curso')";
+
+        if($conexao->query($sql) == TRUE){
+            echo json_encode([
+                'mensagem' => 'CURSO CADASTRADO COM SUCESSO'
+            ]);
+        }
+        else {
+            echo json_encode([
+                'mensagem' => 'ERRO NO CADASTRO DO CURSO'
+            ]);
+        }
     }
 
 
